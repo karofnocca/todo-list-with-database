@@ -1,8 +1,9 @@
 import { host } from "../host.js";
+import { getUserInfo } from "../../utils/authHelper.js";
 
-export async function getTodos() {
+export async function getTodos(uid, token) {
   try {
-    const response = await fetch(`${host}.json`, {
+    const response = await fetch(`${host}/${uid}.json?auth=${token}`, {
       method: "GET",
     });
 

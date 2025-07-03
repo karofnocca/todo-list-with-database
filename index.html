@@ -9,37 +9,49 @@
   </head>
   <body>
     <div id="overlay">
-      
       <div id="spinner"></div>
     </div>
 
     <form id="singup-form">
       <h2>Регистрация</h2>
-      <input type="email" id="singup-email" placeholder="email" required>
-      <input type="password" id="singup-password" placeholder="password" required>
+      <input type="email" id="singup-email" placeholder="email" required />
+      <input
+        type="password"
+        id="singup-password"
+        placeholder="password"
+        required
+      />
       <button type="submit">Зарегистрироваться</button>
+      <button id="singin" type="button">Войти</button>
     </form>
 
     <form id="singin-form">
       <h2>Авторизация</h2>
-      <input type="email" id="singin-email" placeholder="email" required>
-      <input type="password" id="singin-password" placeholder="password" required>
+      <input type="email" id="singin-email" placeholder="email" required />
+      <input
+        type="password"
+        id="singin-password"
+        placeholder="password"
+        required
+      />
       <button type="submit">Войти</button>
     </form>
+    <div id="task-container">
+      <div class="input-block">
+        <input type="text" id="task-input" placeholder="Введите задачу" />
+        <button id="add-button">
+          <img src="./assets/icons/icon-add.png" class="icons" />
+        </button>
+      </div>
 
-    <div class="input-block">
-      <input type="text" id="task-input" placeholder="Введите задачу" />
-      <button id="add-button">
-        <img src="./assets/icons/icon-add.png" class="icons" />
+      
+
+      <div id="posts-container"></div>
+      <button id="delete-completed-button">
+        Удалить все выполненные задачи
       </button>
     </div>
 
-    <div>
-      <button id="button" class="button-download">Получить задачи</button>
-    </div>
-
-    <div id="posts-container"></div>
-    <button id="delete-completed-button">Удалить все выполненные задачи</button>
     <script src="./src/app.js" type="module"></script>
   </body>
 </html>
