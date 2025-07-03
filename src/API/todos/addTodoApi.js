@@ -3,6 +3,7 @@ import { getUserInfo } from "../../utils/authHelper.js";
 
 export async function addTodo(newTodo) {
   try {
+
     const { uid, token } = await getUserInfo();
 
     const response = await fetch(`${host}/${uid}.json?auth=${token}`, {

@@ -1,5 +1,3 @@
-
-
 import { hideLoader } from "../../utils/helpers.js";
 import { createTodoElement } from "./createElements/createTodoElement.js";
 

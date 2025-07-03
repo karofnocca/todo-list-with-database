@@ -7,7 +7,7 @@ export async function loadData() {
   try {
     showLoader();
 
-    const {uid, token} = await getUserInfo()
+    const { uid, token } = await getUserInfo();
     const todos = await getTodos(uid, token);
 
     renderData(todos);

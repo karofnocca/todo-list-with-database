@@ -1,5 +1,4 @@
 import { host } from "../host.js";
-import { getUserInfo } from "../../utils/authHelper.js";
 
 export async function getTodos(uid, token) {
   try {
@@ -24,6 +23,8 @@ export async function getTodos(uid, token) {
     }));
 
     todosArray.sort((a, b) => a.order - b.order);
+
+    console.log(todosArray);
     return todosArray;
   } catch (error) {
     console.error(`Ошибка получения данных:`, error.message);

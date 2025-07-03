@@ -1,17 +1,12 @@
-import {
-  initDeleteCompleted,
-  initAddTodo,
-
-} from "./components/index.js";
+import { initDeleteCompleted, initAddTodo } from "./components/index.js";
 
 initAddTodo();
 initDeleteCompleted();
-initDownload();
 
-const singupForm = document.getElementById("singup-form");
-const singinForm = document.getElementById("singin-form");
+const signupForm = document.getElementById("signup-form");
+const signinForm = document.getElementById("signin-form");
 const taskContainer = document.getElementById("task-container");
 
-singupForm.style.display = "display";
-singinForm.style.display = "none";
+signupForm.style.display = "display";
+signinForm.style.display = "none";
 taskContainer.style.display = "none";

@@ -1,9 +1,11 @@
 import { host } from "../host.js";
 import { getUserInfo } from "../../utils/authHelper.js";
+import { loadData } from "../../components/index.js";
 
 export async function deleteCompletedTodos(container) {
   try {
     const { uid, token } = await getUserInfo();
+
     const completedTodos = Array.from(
       container.querySelectorAll(".todo")
     ).filter((todoElement) => {
@@ -14,9 +16,12 @@ export async function deleteCompletedTodos(container) {
     for (const todoElement of completedTodos) {
       const taskId = todoElement.getAttribute("data-id");
 
-      const deleteResponse = await fetch(`${host}/${uid}/${taskId}.json?auth=${token}`, {
-        method: "DELETE",
-      });
+      const deleteResponse = await fetch(
+        `${host}/${uid}/${taskId}.json?auth=${token}`,
+        {
+          method: "DELETE",
+        }
+      );
 
       if (!deleteResponse.ok) {
         throw new Error(
@@ -24,7 +29,10 @@ export async function deleteCompletedTodos(container) {
         );
       }
     }
-
+    //Убираем loadData, т.к. нет необходимости каждый раз теребить БД, вставляем просто удаление todoElement'а из DOM-дерева
+    // await loadData();
+    todoElement.remove();
+    
     return true;
   } catch (error) {
     console.error("Ошибка удаления выполенных задач:", error.message);

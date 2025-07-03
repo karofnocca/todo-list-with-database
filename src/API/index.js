@@ -5,5 +5,3 @@ export * from "./todos/getStatusTodoApi.js";
 export * from "./todos/getTodoApi.js";
 export * from "./todos/updateTasksOrderApi.js";
 export * from "./todos/updateTodoApi.js";
-export * from "../components/auth/singup.js";
-export * from "../components/auth/singin.js";
