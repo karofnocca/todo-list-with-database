@@ -1,12 +1,11 @@
-import { showLoader } from "./helpers.js";
-
 export const showNotification = (message, type, customTitle) => {
   const titles = {
     error: "Ошибка!",
     success: "Успех!",
     warning: "Внимание!",
-    info: "Информация!",
+    info: "Информация",
   };
+
   const title = customTitle || titles[type] || "Уведомление";
 
   Swal.fire({
@@ -14,7 +13,7 @@ export const showNotification = (message, type, customTitle) => {
     text: message,
     icon: type,
     showConfirmButton: true,
-    confirmButtonText: "OK",
+    confirmButtonText: 'ОК'
   });
 };
 
@@ -25,9 +24,11 @@ export const showError = (message) => {
 export const showSuccess = (message) => {
   showNotification(message, "success");
 };
+
 export const showWarning = (message) => {
   showNotification(message, "warning");
 };
+
 export const showInfo = (message) => {
   showNotification(message, "info");
 };

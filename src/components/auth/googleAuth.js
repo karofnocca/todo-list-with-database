@@ -1,7 +1,7 @@
 import {
   auth,
-  GoogleAuthProvider,
   signInWithPopup,
+  GoogleAuthProvider,
 } from "../../firebaseConfig.js";
 
 export async function signWithGoogle() {
@@ -9,12 +9,13 @@ export async function signWithGoogle() {
 
   try {
     const result = await signInWithPopup(auth, provider);
+    console.log(result);
     if (result._tokenResponse.isNewUser) {
-      console.log("ПРоизошла регистрация через гугл");
+      console.log("Регистрация через Google прошла успешно");
     } else {
-      console.log("Вход через гугл прошел успешно");
+      console.log("Вход через Google выполнен успешно");
     }
   } catch (error) {
-    console.error("Ошибка входа через Google", error.message);
+    console.error("Ошибка входа через Google: ", error.message);
   }
 }

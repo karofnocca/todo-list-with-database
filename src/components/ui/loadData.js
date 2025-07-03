@@ -12,13 +12,12 @@ export async function loadData() {
     const todos = await getTodos(uid, token);
 
     if (todos.length === 0) {
-      showInfo("У вас пока нет задач");
+      showInfo("У Вас пока нет задач");
     } else {
       renderData(todos);
     }
   } catch (error) {
     console.error(error.message);
-
     showError("Не удалось получить данные");
   } finally {
     hideLoader();

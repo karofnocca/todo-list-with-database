@@ -1,5 +1,4 @@
 import { deleteTodo } from "../../API/index.js";
-import { loadData } from "../index.js";
 import { showConfirmation, showError } from "../../utils/notification.js";
 
 export function initDelete(todo, deleteButton) {
@@ -10,8 +9,10 @@ export function initDelete(todo, deleteButton) {
     if (!isConfirmed) {
       return;
     }
+
     try {
       await deleteTodo(todo.id);
+
       deleteButton.closest(".todo").remove();
     } catch (error) {
       console.error(error.message);

@@ -1,4 +1,4 @@
-import { signOut, auth } from "../../firebaseConfig.js";
+import { auth, signOut } from "../../firebaseConfig.js";
 import { hideSignupForm } from "./signUp.js";
 import { showSigninForm } from "./signUp.js";
 

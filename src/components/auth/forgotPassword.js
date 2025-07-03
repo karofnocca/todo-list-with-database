@@ -1,25 +1,24 @@
-import { sendPasswordResetEmail, auth } from "../../firebaseConfig.js";
+import { auth, sendPasswordResetEmail } from "../../firebaseConfig.js";
 
 const forgotPasswordForm = document.getElementById("forgot-password-form");
 const forgotPasswordMessage = document.getElementById(
   "forgot-password-message"
 );
 
-forgotPasswordForm.addEventListener("submit", async (e) => {
-  e.preventDefault();
+forgotPasswordForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
   const email = document.getElementById("forgot-password-email").value;
 
   try {
     await sendPasswordResetEmail(auth, email);
     forgotPasswordMessage.textContent =
-      "Письмо для сброса пароля успешно отправлено на ваш email";
+      "Письмо для сброса пароля отправлено на Ваш email";
     forgotPasswordMessage.style.color = "green";
-    forgotPasswordMessage.style.margin = "10px";
     forgotPasswordForm.style.display = "none";
   } catch (error) {
-    console.error("Ошибка при отправке письма");
+    console.error("Ошибка при отправке письма: ", error.message);
     forgotPasswordMessage.textContent = `Ошибка: ${error.message}`;
     forgotPasswordMessage.style.color = "red";
-    forgotPasswordMessage.style.margin = "10px";
   }
 });

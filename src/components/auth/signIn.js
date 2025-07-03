@@ -1,18 +1,11 @@
 import {
   auth,
-  sendEmailVerification,
   signInWithEmailAndPassword,
+  sendEmailVerification,
 } from "../../firebaseConfig.js";
-import {
-  showConfirmation,
-  showSuccess,
-  showWarning,
-} from "../../utils/notification.js";
 import { loadData } from "../index.js";
-import { signWithGoogle } from "../index.js";
-
-const signinForm = document.getElementById("signin-form");
-const taskContainer = document.getElementById("task-container");
+import { showConfirmation, showWarning } from "../../utils/notification.js";
+import { signWithGoogle } from "./googleAuth.js";
 
 const googleButton = document.getElementById("google-signin-button");
 googleButton.addEventListener("click", signWithGoogle);
@@ -21,10 +14,15 @@ const forgotPasswordForm = document.getElementById("forgot-password-form");
 const forgotPasswordButton = document.getElementById("forgot-password-button");
 forgotPasswordButton.addEventListener("click", showForgotPasswordForm);
 
+const signinForm = document.getElementById("signin-form");
+
+const taskContainer = document.getElementById("task-container");
+
 signinForm.addEventListener("submit", async (event) => {
   event.preventDefault();
 
   const email = document.getElementById("signin-email").value;
+
   const password = document.getElementById("signin-password").value;
 
   try {
@@ -38,24 +36,31 @@ signinForm.addEventListener("submit", async (event) => {
 
     if (!user.emailVerified) {
       showWarning(
-        "Ваш email не верифицирован, пожалуйста, проверьте вашу почту!"
+        "Ваш email не верифицирован. Пожалуйста, проверьте Вашу почту"
       );
-      const resend = showConfirmation(
+      const resend = await showConfirmation(
         "Отправить письмо для верификации повторно?"
       );
+
       if (resend) {
         await sendEmailVerification(user);
-        showSuccess("Письмо для верификации отправлено повторно");
+        showSuccess(
+          "Письмо для верификации отправлено повторно. Проверьте Вашу почту"
+        );
       }
       return;
     }
-
     hideSigninForm();
     showTasksBlock();
     loadData();
   } catch (error) {
-    console.error("Ошибка авторизации: ", error.message, error.code);
-    alert(`Ошибка авторизации: ${error.message}`);
+    if (error.code === "auth/email-already-in-use") {
+      showWarning(
+        "Это email уже зарегистрирован. Пожалуйста, войдите в систему"
+      );
+    }
+    console.error("Ошибка регистрации: ", error.message, error.code);
+    //showError(`Ошибка регистрации`);
   }
 });
 

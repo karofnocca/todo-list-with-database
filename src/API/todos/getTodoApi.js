@@ -14,7 +14,7 @@ export async function getTodos(uid, token) {
     console.log("Данные получены:", data);
 
     if (!data) {
-      return [];
+     return []
     }
 
     const todosArray = Object.keys(data).map((key) => ({

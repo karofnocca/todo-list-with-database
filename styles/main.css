@@ -1,3 +1,4 @@
+/* Общие стили */
 * {
   margin: 0;
   padding: 0;
@@ -352,10 +353,6 @@ body {
   margin-top: 0.5rem;
 }
 
-#forgot-password-form {
-  display: none;
-}
-
 .form-button.secondary:hover {
   background-color: #5a6268;
 }
@@ -363,25 +360,6 @@ body {
 #forgot-password-form {
   display: none;
   flex-direction: column;
-}
-
-#google-signin-button, #google-signup-button {
-  height: 48px;
-  border: none;
-  border-radius: 6px;
-  padding: 12px;
-  background-color: #f0f0f0;
-  font-size: 16px;
-  cursor: pointer;
-  margin-top: .5rem;
-  background-image: url('./../assets/icons/icons-google.png');
-  background-repeat: no-repeat;
-  width: 100%;
-}
-
-#google-signin-button:hover, #google-signup-button:hover {
-  background-color: #d6d6d6;
-
 }
 
 .logout-button {

@@ -1,9 +1,12 @@
-import { initDeleteCompleted, initAddTodo } from "./components/index.js";
+import {
+  initDeleteCompleted,
+  initAddTodo,
+  hideSigninForm,
+  hideSignupForm,
+} from "./components/index.js";
 import { auth, onAuthStateChanged } from "./firebaseConfig.js";
 import { loadData } from "./components/index.js";
 import { showTasksBlock } from "./components/index.js";
-import { hideSigninForm } from "./components/index.js";
-import { hideSignupForm } from "./components/index.js";
 import { showWarning } from "./utils/notification.js";
 
 export function initApp() {
@@ -11,7 +14,7 @@ export function initApp() {
     if (user) {
       if (!user.emailVerified) {
         showWarning(
-          "Ваш email не верифицирован, пожалуйста, проверьте вашу почту"
+          "Ваш email не верифицирован. Пожалуйста, проверьте Вашу почту"
         );
         return;
       }
@@ -21,9 +24,10 @@ export function initApp() {
       showTasksBlock();
     } else {
       console.log("Пользователь не авторизован");
-      document.getElementById("signup-form").style.display = "block";
+      document.getElementById("signup-form").style.display = "flex";
     }
   });
+
   initAddTodo();
   initDeleteCompleted();
 }

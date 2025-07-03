@@ -6,10 +6,8 @@ import { showConfirmation } from "../../utils/notification.js";
 export function initDeleteCompleted() {
   deleteCompletedButton.addEventListener("click", async () => {
     const isConfirmed = await showConfirmation(
-      "Все выполненные задачи будут удалены, вы уверены? "
+      "Все выполненные задачи будут удалены! Вы уверены?"
     );
-
-    console.log(isConfirmed);
 
     if (!isConfirmed) {
       return;

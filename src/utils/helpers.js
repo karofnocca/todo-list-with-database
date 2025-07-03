@@ -1,7 +1,5 @@
 const overlay = document.getElementById("overlay");
 
-
-
 export function showLoader() {
   overlay.style.display = "flex";
 }

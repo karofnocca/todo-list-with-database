@@ -1,5 +1,6 @@
 import { host } from "../host.js";
 import { getUserInfo } from "../../utils/authHelper.js";
+import { loadData } from "../../components/index.js";
 
 export async function deleteCompletedTodos(container) {
   try {
@@ -27,10 +28,11 @@ export async function deleteCompletedTodos(container) {
           `Не удалось удалить список выполненных. Статус: ${deleteResponse.status}`
         );
       }
+
+      todoElement.remove();
     }
     //Убираем loadData, т.к. нет необходимости каждый раз теребить БД, вставляем просто удаление todoElement'а из DOM-дерева
     // await loadData();
-    todoElement.remove();
 
     return true;
   } catch (error) {
