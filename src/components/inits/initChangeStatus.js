@@ -1,6 +1,6 @@
 import { toggleTodoStatus } from "../../API/index.js";
+import { showError } from "../../utils/notification.js";
 import { loadData } from "../index.js";
-import { showError } from "../../utils/helpers.js";
 
 export function initChangeStatus(todo, checkbox) {
   checkbox.addEventListener("change", async () => {
