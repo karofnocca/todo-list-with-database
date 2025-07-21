@@ -1,4 +1,4 @@
-import { createCheckbox } from "./createCheckBox.js";
+import { createCheckbox } from "./createCheckbox.js";
 import { createText } from "./createText.js";
 import { createTime } from "./createTime.js";
 import { createUpdateButton } from "./createUpdateButton.js";
