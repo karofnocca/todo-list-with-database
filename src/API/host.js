@@ -1,2 +1,1 @@
-export const host =
-  "https://syper-todo-default-rtdb.europe-west1.firebasedatabase.app/rodos/v1";
+export const host = "https://todo-170125-default-rtdb.europe-west1.firebasedatabase.app/todos/v1";
